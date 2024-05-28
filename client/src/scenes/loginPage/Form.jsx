@@ -45,6 +45,36 @@ const initialValuesLogin = {
   email: "",
   password: "",
 };
-const Form = () => {};
+const Form = () => {
+  const [pageType, setPageType] = useState("login");
+  const { palette } = useTheme();
+  const Dispatch = useDispatch();
+  const navigate = useNavigate();
+  const isNonMobile = useMediaQuery("(min-width:600px)");
+  const isLogin = pageType === "login";
+  const isRegister = pageType === "register";
+  const handleFormSubmit = async (values, onSubmitProps) => {};
+
+  return (
+    <Formik
+      onSubmit={handleFormSubmit}
+      initialValues={isLogin ? initialValuesLogin : initialValuesRegister}
+      validationSchema={isLogin ? loginSchema : registerSchema}
+    >
+        {({
+         values,
+         errors,
+         touched,
+         handleBlur,
+         handleChange,
+         handleSubmit,
+         setFieldValue,
+         resetForm,
+        })= (
+            
+        )} 
+    </Formik>
+  );
+};
 
 export default Form;
